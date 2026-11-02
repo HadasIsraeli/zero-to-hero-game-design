@@ -1,0 +1,64 @@
+.prose {
+  font-size: var(--text-md);
+}
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--color-accent);
+  margin: var(--space-8) 0 var(--space-2);
+}
+
+.prose p {
+  margin: 0 0 var(--space-4);
+}
+
+.prose blockquote {
+  margin: 0 0 var(--space-6);
+  padding: var(--space-3) var(--space-4);
+  border-left: 4px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+}
+
+.prose blockquote p {
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.navLink {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--duration-fast) ease-out;
+}
+
+.navLink:hover {
+  background: var(--color-surface-raised);
+}
+
+.navNext {
+  margin-left: auto;
+  text-align: right;
+}
+
+.navHint {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
