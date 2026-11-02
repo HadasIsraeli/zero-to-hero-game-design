@@ -38,6 +38,9 @@ content/
 - Design tokens (colors, type, spacing) live in one theme file; no hard-coded colors in components.
 - Pure game/scoring logic lives in `shared/lib` or the feature's `model/` folder and has unit tests.
 
+## Course content reference
+- `assets/docs/syllabus.md` holds the full syllabus: each level's studio and game anchors, boss-fight project, trends and research. Read the relevant level section before writing any lesson, toy or quiz for that level.
+
 ## Media and assets (single source of truth)
 - All media lives in `assets/` at the project root. `assets/media.json` lists every video, diagram, paper and link, grouped by level and module.
 - Always fetch media from `assets/media.json` through one typed loader (`shared/lib/media.ts`); lessons reference media by `id` only (e.g. `<Media id="mda-diagram" />`). Never hard-code a URL or file path in a lesson or component.
