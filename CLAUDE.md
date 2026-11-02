@@ -9,7 +9,7 @@ Every lesson is a playable toy first and theory second. Build it like a senior e
 - React Compiler enabled — do not add manual useMemo / useCallback / React.memo
 - State: Zustand store for progress/XP behind a `ProgressStorage` interface (localStorage adapter now; Supabase adapter later)
 - Mini-games: React + canvas (Phaser only if a toy truly needs a game engine)
-- Tests: Vitest + React Testing Library (logic), Playwright (one end-to-end path)
+- Tests: Vitest (Node for logic, Browser Mode for components) + Playwright end-to-end. See "Tests" below.
 - Lint/format: ESLint + Prettier. CI on every push (GitHub Actions): typecheck, lint, test, build
 
 ## Folder structure (feature-based)
@@ -42,6 +42,13 @@ content/
 
 ## Course content reference
 - `assets/docs/syllabus.md` holds the full syllabus: each level's studio and game anchors, boss-fight project, trends and research. Read the relevant level section before writing any lesson, toy or quiz for that level.
+
+## Tests
+- Pure logic tests are `*.test.ts` and run in Node.
+- Anything that renders React (components, pages, lazy routes, toys) is `*.test.tsx` and runs in Vitest Browser Mode (Chromium via Playwright). Use `vitest-browser-react`'s `render`, `vitest/browser` `page` locators, and `await expect.element(...)` for anything async.
+- No Testing Library, `user-event`, manual `act()` or jsdom (ESLint blocks `@testing-library/*`). Interact like a user: real clicks, keyboard and scrolling; no fakes for browser APIs. Use `commands.setReducedMotion(true)` to test reduced motion.
+- `toHaveTextContent` is an exact match; use `toMatchTextContent` for partial text.
+- Playwright (`e2e/`) covers full journeys against the production build.
 
 ## Media and assets (single source of truth)
 - All media lives in `assets/` at the project root. `assets/media.json` lists every video, diagram, paper and link, grouped by level and module.

@@ -18,12 +18,13 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # Component tests (Vitest Browser Mode) and e2e both need Chromium.
+      - run: npx playwright install --with-deps chromium
       - run: npm run typecheck
       - run: npm run lint
       - run: npm run format:check
       - run: npm test
       - run: npm run build
-      - run: npx playwright install --with-deps chromium
       - run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: failure()

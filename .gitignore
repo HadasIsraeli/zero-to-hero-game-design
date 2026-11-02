@@ -14,3 +14,6 @@ blob-report
 
 .DS_Store
 Thumbs.db
+
+# Vitest Browser Mode attachments
+.vitest

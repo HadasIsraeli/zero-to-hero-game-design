@@ -1,7 +1,6 @@
-import { act, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import { setReducedMotion } from '../../../test/browserFakes';
+import { commands, page, userEvent } from 'vitest/browser';
+import { render } from 'vitest-browser-react';
 import { testCourse } from '../model/fixtures';
 import { emptyProgress } from '../model/state';
 import { ProgressProvider } from '../ProgressProvider';
@@ -12,39 +11,46 @@ import { LevelUpDialog } from './LevelUpDialog';
 async function renderAndRankUp() {
   const storage = memoryAdapter({ ...emptyProgress(), xp: 60 });
   const store = createProgressStore({ storage, course: testCourse });
-  render(
+  await store.getState().hydrate();
+  const screen = await render(
     <ProgressProvider storage={storage} course={testCourse} store={store}>
       <button type="button">Somewhere else</button>
       <LevelUpDialog />
     </ProgressProvider>,
   );
-  await act(() => store.getState().hydrate());
-  act(() => {
-    store.getState().completeLesson('0/a1'); // 60 + 50 → rank 2
-  });
-  return store;
+  await screen.getByRole('button', { name: 'Somewhere else' }).click();
+  store.getState().completeLesson('0/a1'); // 60 + 50 → rank 2
+  return { screen, store };
 }
 
 describe('<LevelUpDialog>', () => {
-  it('opens on a rank-up and names the new rank', async () => {
+  it('opens on a rank-up as a focused modal naming the new rank', async () => {
     await renderAndRankUp();
-    const dialog = screen.getByRole('dialog', { name: /Rank 2 · Apprentice/ });
-    expect(dialog).toHaveAttribute('open');
-    expect(screen.getByTestId('particle-burst')).toBeInTheDocument();
+    await expect.element(page.getByRole('dialog', { name: /Rank 2 · Apprentice/ })).toBeVisible();
+    await expect.element(page.getByRole('button', { name: 'Keep going' })).toHaveFocus();
+    await expect.element(page.getByTestId('particle-burst')).toBeInTheDocument();
   });
 
-  it('closes and clears the celebration from its button', async () => {
-    const store = await renderAndRankUp();
-    await userEvent.click(screen.getByRole('button', { name: 'Keep going' }));
+  it('closes on Escape, clears the celebration and returns focus', async () => {
+    const { store } = await renderAndRankUp();
+    await expect.element(page.getByRole('dialog')).toBeVisible();
+    await userEvent.keyboard('{Escape}');
 
-    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    await expect.element(page.getByRole('dialog')).not.toBeInTheDocument();
     expect(store.getState().celebrations.some((c) => c.kind === 'rank-up')).toBe(false);
+    await expect.element(page.getByRole('button', { name: 'Somewhere else' })).toHaveFocus();
+  });
+
+  it('closes from its button', async () => {
+    await renderAndRankUp();
+    await page.getByRole('button', { name: 'Keep going' }).click();
+    await expect.element(page.getByRole('dialog')).not.toBeInTheDocument();
   });
 
   it('skips the particle burst under reduced motion but still celebrates', async () => {
-    setReducedMotion(true);
+    await commands.setReducedMotion(true);
     await renderAndRankUp();
-    expect(screen.getByRole('dialog', { name: /Rank 2/ })).toBeInTheDocument();
-    expect(screen.queryByTestId('particle-burst')).not.toBeInTheDocument();
+    await expect.element(page.getByRole('dialog', { name: /Rank 2/ })).toBeVisible();
+    await expect.element(page.getByTestId('particle-burst')).not.toBeInTheDocument();
   });
 });

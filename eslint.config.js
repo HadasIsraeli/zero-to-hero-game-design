@@ -8,12 +8,20 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 // React Compiler memoises for us (see CLAUDE.md), so manual memoisation is banned.
-const noManualMemo = {
+const restrictedImports = {
   paths: [
     {
       name: 'react',
       importNames: ['useMemo', 'useCallback', 'memo'],
       message: 'React Compiler handles memoisation; remove manual useMemo/useCallback/memo.',
+    },
+  ],
+  // Testing Library wraps renders and clicks in a synchronous act(), which leaves React stuck
+  // when a lazy page or lesson suspends. Component tests use vitest-browser-react (CLAUDE.md).
+  patterns: [
+    {
+      group: ['@testing-library/*'],
+      message: 'Use vitest-browser-react render and vitest/browser page locators instead.',
     },
   ],
 };
@@ -46,7 +54,7 @@ export default defineConfig([
     },
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
-      'no-restricted-imports': ['error', noManualMemo],
+      'no-restricted-imports': ['error', restrictedImports],
       'no-restricted-syntax': [
         'error',
         {

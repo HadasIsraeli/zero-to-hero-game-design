@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
+import { render } from 'vitest-browser-react';
 import type { MediaView } from '@shared/lib/media';
 import { Media } from './Media';
 
@@ -15,7 +15,7 @@ const views: Record<string, MediaView> = {
     kind: 'card',
     id: 'unchecked',
     title: 'Juice it or lose it',
-    href: 'https://www.youtube.com/watch?v=clRfPR9X91E&t=3551s',
+    href: 'https://www.youtube.com/watch?v=Fy0aCDmgnxg',
     label: 'Video',
   },
 };
@@ -26,17 +26,24 @@ vi.mock('@shared/lib/media', () => ({
 }));
 
 describe('<Media> videos', () => {
-  it('embeds a playable video lazily from youtube-nocookie, labelled by its title', () => {
-    render(<Media id="embedded" />);
-    const frame = screen.getByTitle('The Art of Screenshake');
-    expect(frame.tagName).toBe('IFRAME');
-    expect(frame).toHaveAttribute('loading', 'lazy');
-    expect(frame.getAttribute('src')).toMatch(/^https:\/\/www\.youtube-nocookie\.com\/embed\//);
+  it('embeds a playable video lazily from youtube-nocookie, labelled by its title', async () => {
+    // Hidden, so Chrome never fetches the lazy iframe: tests stay off the network.
+    const screen = await render(
+      <div hidden>
+        <Media id="embedded" />
+      </div>,
+    );
+    const frame = screen.container.querySelector('iframe');
+    expect(frame?.title).toBe('The Art of Screenshake');
+    expect(frame?.getAttribute('loading')).toBe('lazy');
+    expect(frame?.src).toMatch(/^https:\/\/www\.youtube-nocookie\.com\/embed\//);
   });
 
-  it('shows an unchecked video as a link card instead of an embed', () => {
-    render(<Media id="unchecked" />);
-    expect(screen.queryByTitle('Juice it or lose it')).not.toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Juice it or lose it/ })).toHaveTextContent('Video');
+  it('shows an unchecked video as a link card instead of an embed', async () => {
+    const screen = await render(<Media id="unchecked" />);
+    expect(screen.container.querySelector('iframe')).toBeNull();
+    await expect
+      .element(screen.getByRole('link', { name: /Juice it or lose it/ }))
+      .toMatchTextContent(/Video/);
   });
 });
