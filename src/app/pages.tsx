@@ -5,3 +5,4 @@ export const HomePage = lazy(() => import('./routes/HomePage'));
 export const LevelPage = lazy(() => import('./routes/LevelPage'));
 export const LessonPage = lazy(() => import('./routes/LessonPage'));
 export const NotFoundPage = lazy(() => import('./routes/NotFoundPage'));
+export const ProgressPage = lazy(() => import('./routes/ProgressPage'));

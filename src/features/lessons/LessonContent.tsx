@@ -3,6 +3,7 @@ import type { MDXComponents } from 'mdx/types';
 import { use } from 'react';
 import type { Lesson } from '@content/course.manifest';
 import { Media } from '@shared/ui';
+import { LessonEndMarker } from './activity/LessonActivity';
 import { loadLesson } from './loadLesson';
 import styles from './lessons.module.css';
 
@@ -17,6 +18,8 @@ export function LessonContent({ lesson }: { lesson: Lesson }) {
       <MDXProvider components={lessonComponents}>
         <Content />
       </MDXProvider>
+      {/* Inside the Suspense boundary, so it can't be "reached" while the lesson is loading. */}
+      <LessonEndMarker />
     </div>
   );
 }

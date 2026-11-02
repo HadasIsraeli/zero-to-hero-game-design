@@ -5,9 +5,10 @@ test('a learner walks from the level map into Level 0 and through two lessons', 
 }) => {
   await page.goto('/');
   await expect(page).toHaveTitle('Game Design: Zero to Hero');
-  await expect(page.getByRole('list', { name: 'Level map' }).getByRole('link')).toHaveCount(7);
+  const map = page.getByRole('list', { name: 'Level map' });
+  await expect(map.getByRole('link')).toHaveCount(7);
 
-  await page.getByRole('link', { name: /Level 0.*Press Start/ }).click();
+  await map.getByRole('link', { name: /Level 0.*Press Start/ }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'Press Start' })).toBeVisible();
 
   await page.getByRole('link', { name: 'What is a game' }).click();

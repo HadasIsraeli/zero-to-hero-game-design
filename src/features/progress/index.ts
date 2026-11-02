@@ -1,1 +1,15 @@
-export {};
+export { ProgressProvider } from './ProgressProvider';
+export { useProgress } from './progressContext';
+export { createProgressStore, type Celebration, type ProgressStore } from './store';
+export type { ProgressStorage } from './storage/ProgressStorage';
+export { localStorageAdapter, PROGRESS_KEY } from './storage/localStorageAdapter';
+export { memoryAdapter } from './storage/memoryAdapter';
+export { emptyProgress, lessonId, type ProgressState } from './model/state';
+export { rankForXp, RANKS, XP_REWARDS } from './model/ranks';
+export { courseProgress, levelProgress, recommendedNext } from './model/skillTree';
+export { BadgeGrid } from './ui/BadgeGrid';
+export { BadgeToast } from './ui/BadgeToast';
+export { CompleteLessonButton } from './ui/CompleteLessonButton';
+export { HeaderProgress } from './ui/HeaderProgress';
+export { LevelUpDialog } from './ui/LevelUpDialog';
+export { SkillTree } from './ui/SkillTree';

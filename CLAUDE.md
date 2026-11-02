@@ -32,6 +32,8 @@ content/
 ## Rules
 - Content is separate from code: adding a lesson = new .mdx + manifest entry, never app-code changes.
 - Every toy implements one contract: `type ToyProps = { onComplete: (result: ToyResult) => void }`.
+- "Complete lesson" unlocks only after the lesson's toy calls `onComplete` (toys register with `useLessonActivity`), or, for lessons without a toy, once the reader reaches the end. Until then it is disabled with a hint.
+- Player progression is called **Rank**; "Level" always means a course level. No hard locks: every level stays open, and the map highlights the recommended next lesson.
 - Lazy-load each level with React.lazy + Suspense; toys load only when opened.
 - Function components only. No `any`. No default exports except route/lesson entry points.
 - Accessibility: every toy keyboard-playable; respect `prefers-reduced-motion` for all "juice" animations; WCAG AA contrast.

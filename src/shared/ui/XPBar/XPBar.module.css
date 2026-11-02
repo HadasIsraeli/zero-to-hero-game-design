@@ -1,0 +1,37 @@
+.bar,
+.compact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.compact {
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+.track {
+  flex: 1;
+  min-width: 6rem;
+  height: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-raised);
+  overflow: hidden;
+}
+
+.compact .track {
+  height: var(--space-2);
+}
+
+.fill {
+  height: 100%;
+  border-radius: var(--radius-sm);
+  background: var(--color-xp);
+  transition: width var(--duration-base) ease-out;
+}
+
+.numbers {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+}

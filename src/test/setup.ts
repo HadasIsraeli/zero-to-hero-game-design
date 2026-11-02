@@ -1,10 +1,14 @@
 import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
-import { afterEach } from 'vitest';
+import { afterEach, beforeEach } from 'vitest';
+import { installBrowserFakes } from './browserFakes';
 
-// jsdom has no layout, so scrolling is a no-op (React Router's ScrollRestoration calls it).
+// Node-environment tests (scripts/) have no window.
 if (typeof window !== 'undefined') {
-  Object.defineProperty(window, 'scrollTo', { value: () => undefined, writable: true });
+  beforeEach(() => {
+    installBrowserFakes();
+    window.localStorage.clear();
+  });
 }
 
 afterEach(() => {

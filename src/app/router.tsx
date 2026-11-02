@@ -1,6 +1,6 @@
 import type { RouteObject } from 'react-router';
 import { AppLayout } from './AppLayout';
-import { HomePage, LessonPage, LevelPage, NotFoundPage } from './pages';
+import { HomePage, LessonPage, LevelPage, NotFoundPage, ProgressPage } from './pages';
 import { RouteError } from './RouteError';
 
 export const routes: RouteObject[] = [
@@ -11,6 +11,7 @@ export const routes: RouteObject[] = [
       { index: true, element: <HomePage /> },
       { path: 'level/:level', element: <LevelPage /> },
       { path: 'level/:level/:lesson', element: <LessonPage /> },
+      { path: 'progress', element: <ProgressPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },
