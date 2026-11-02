@@ -1,0 +1,83 @@
+{
+  "$comment": "Single source of truth for all course media. The app must read media from here — never hard-code URLs in components or lessons. type: youtube (embed by id, optional start seconds) | link (external page, shown as a card) | pdf (external paper) | diagram (local SVG in assets/images/diagrams). verified: false means the item was found in research but its embed has not been checked yet — run the media check script before showing it.",
+  "version": 1,
+  "levels": [
+    {
+      "level": 0,
+      "title": "Press Start",
+      "media": [
+        { "id": "mda-diagram", "type": "diagram", "file": "images/diagrams/mda-framework.svg", "alt": "Mechanics produce dynamics, which produce aesthetics; players experience the chain in reverse.", "module": "The MDA framework" },
+        { "id": "mda-paper", "type": "pdf", "title": "MDA: A Formal Approach to Game Design and Game Research (Hunicke, LeBlanc, Zubek, 2004)", "url": "https://users.cs.northwestern.edu/~hunicke/MDA.pdf", "module": "The MDA framework", "verified": true },
+        { "id": "core-loop-diagram", "type": "diagram", "file": "images/diagrams/core-loop.svg", "alt": "Act, feedback, reward, upgrade, repeat.", "module": "What is a game" },
+        { "id": "minecraft-design", "type": "link", "title": "Minecraft game design: what can we learn?", "source": "Game Design Skills", "url": "https://gamedesignskills.com/game-design/minecraft/", "module": "Deconstructing a game you love", "verified": true }
+      ]
+    },
+    {
+      "level": 1,
+      "title": "Core Loop",
+      "media": [
+        { "id": "juice-it-or-lose-it", "type": "youtube", "title": "Juice it or lose it — Martin Jonasson & Petri Purho", "youtubeId": "clRfPR9X91E", "start": 3551, "module": "Game feel and juice", "verified": false, "note": "Talk sits inside a longer stream; start offset jumps to it." },
+        { "id": "art-of-screenshake", "type": "youtube", "title": "The Art of Screenshake — Jan Willem Nijman (Vlambeer)", "youtubeId": "AJdEqssNZ-U", "module": "Game feel and juice", "verified": false },
+        { "id": "four-hour-game-design", "type": "youtube", "title": "The 4 Hour Game Design — Jonatan Söderström", "youtubeId": "sgwlJu8Ql2o", "module": "Paper prototyping", "verified": false },
+        { "id": "balatro-cursed-problem", "type": "link", "title": "Balatro's 'Cursed' Design Problem", "source": "Game Maker's Toolkit", "url": "https://gmtk.substack.com/p/balatros-cursed-design-problem", "module": "Feedback, timing and responsiveness", "verified": true, "note": "Page embeds the video; swap to a youtube entry once you add its id." }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "The Player's Mind",
+      "media": [
+        { "id": "sdt-diagram", "type": "diagram", "file": "images/diagrams/self-determination-theory.svg", "alt": "Competence, autonomy and relatedness drive intrinsic motivation.", "module": "Self-Determination Theory" },
+        { "id": "sdt-paper", "type": "pdf", "title": "The Motivational Pull of Video Games (Ryan, Rigby & Przybylski, 2006)", "url": "https://www.rochester.edu/warner/lida/wp-content/uploads/2022/11/02bfe513dd59366750000000.pdf", "module": "Self-Determination Theory", "verified": true },
+        { "id": "flow-diagram", "type": "diagram", "file": "images/diagrams/flow-channel.svg", "alt": "Flow sits between anxiety (too hard) and boredom (too easy) as skill and challenge rise together.", "module": "Flow and the challenge/skill channel" },
+        { "id": "quantic-foundry", "type": "link", "title": "Gamer Motivation Model — 12 motivations", "source": "Quantic Foundry", "url": "https://quanticfoundry.com/", "module": "Player types", "verified": true },
+        { "id": "cozy-trend", "type": "link", "title": "The rise of cozy games", "source": "CGMagazine", "url": "https://www.cgmagonline.com/articles/the-rise-of-cozy-games/", "module": "Designing for calm (cozy)", "verified": true }
+      ]
+    },
+    {
+      "level": 3,
+      "title": "Challenge & Failure",
+      "media": [
+        { "id": "kishotenketsu-diagram", "type": "diagram", "file": "images/diagrams/kishotenketsu-level.svg", "alt": "Introduce, develop, twist, conclude: one mechanic across four beats.", "module": "Kishōtenketsu level design" },
+        { "id": "mario-4-step", "type": "youtube", "title": "Super Mario 3D World's 4 Step Level Design", "source": "Game Maker's Toolkit", "youtubeId": "dBmIkEvEBtA", "module": "Kishōtenketsu level design", "verified": false },
+        { "id": "miyazaki-interview", "type": "link", "title": "Interview with Hidetaka Miyazaki on Elden Ring", "source": "PlayStation Blog", "url": "https://blog.playstation.com/2022/01/28/an-interview-with-fromsoftwares-hidetaka-miyazki/", "module": "Difficulty curves and fairness", "verified": true },
+        { "id": "failure-loop-diagram", "type": "diagram", "file": "images/diagrams/failure-loop.svg", "alt": "Run, die, story, upgrade: Hades turns death into progression.", "module": "Failure loops and meta-progression" },
+        { "id": "hades-interview", "type": "link", "title": "Supergiant explains why we love (and hate) roguelikes", "source": "Tom's Guide", "url": "https://www.tomsguide.com/uk/features/hades-exclusive-interview-supergiant", "module": "Failure loops and meta-progression", "verified": true },
+        { "id": "hades-gdc-podcast", "type": "link", "title": "Roguelikes and narrative design with Greg Kasavin — GDC Podcast ep. 16", "source": "GDC", "url": "https://gdconf.com/news/roguelikes-and-narrative-design-hades-creative-director-greg-kasavin-gdc-podcast-ep-16", "module": "Roguelite structure", "verified": true }
+      ]
+    },
+    {
+      "level": 4,
+      "title": "Systems & Worlds",
+      "media": [
+        { "id": "chemistry-diagram", "type": "diagram", "file": "images/diagrams/chemistry-engine.svg", "alt": "Three rules between elements and materials create emergent play.", "module": "Systemic and multiplicative design" },
+        { "id": "botw-gdc-talk", "type": "youtube", "title": "Breaking Conventions with The Legend of Zelda: Breath of the Wild (GDC 2017)", "source": "GDC", "youtubeId": "QyMsF31NdNc", "module": "Systemic and multiplicative design", "verified": false, "note": "~90 minutes; link chapters rather than autoplay." },
+        { "id": "totk-lesson", "type": "link", "title": "Tears of the Kingdom's developers share a lesson more studios should follow", "source": "Den of Geek", "url": "https://www.denofgeek.com/games/tears-of-the-kingdoms-developers-share-a-lesson-more-studios-should-follow/", "module": "Systemic and multiplicative design", "verified": true },
+        { "id": "clair-obscur-combat", "type": "link", "title": "Clair Obscur: Expedition 33 — reactive turn-based combat", "source": "PlayStation Blog", "url": "https://blog.playstation.com/?p=394441", "module": "Narrative design and choice", "verified": true }
+      ]
+    },
+    {
+      "level": 5,
+      "title": "Business & Live",
+      "media": [
+        { "id": "supercell-cells", "type": "link", "title": "The Cell Structure: How Supercell Turned the Org-Chart Upside Down", "source": "GDC Vault", "url": "https://gdcvault.com/browse/gdc-18/play/1025004/", "module": "Live-service", "verified": true },
+        { "id": "riot-player-dynamics", "type": "link", "title": "Behind Riot Games' Player Dynamics design philosophy", "source": "Game Developer", "url": "https://gamedeveloper.com/design/video-behind-riot-games-player-dynamics-design-philosophy", "module": "Multiplayer and social dynamics", "verified": true },
+        { "id": "ugc-2026", "type": "link", "title": "Games industry in 2026 and beyond (UGC economy)", "source": "Taylor Wessing", "url": "https://www.taylorwessing.com/en/insights-and-events/insights/2026/03/games-industry-in-2026-and-beyond", "module": "UGC and creator platforms", "verified": true },
+        { "id": "gdc-2026-state", "type": "link", "title": "2026 State of the Game Industry (generative AI, layoffs)", "source": "GDC / Business Wire", "url": "https://www.businesswire.com/news/home/20260129438528/en/2026-State-of-the-Game-Industry-Report-Reveals-Widening-Effect-of-Layoffs-Broader-Perspectives-on-Generative-AI-Unionization-Tariffs-and-More", "module": "AI in the pipeline", "verified": true }
+      ]
+    },
+    {
+      "level": 6,
+      "title": "Ship It",
+      "media": [
+        { "id": "playtest-diagram", "type": "diagram", "file": "images/diagrams/playtest-loop.svg", "alt": "Hypothesis, build, playtest, change, repeat.", "module": "Playtesting like Valve" },
+        { "id": "valve-secret-weapon", "type": "youtube", "title": "Valve's \"Secret Weapon\"", "source": "Game Maker's Toolkit", "youtubeId": "9Yomqk0C6kE", "module": "Playtesting like Valve", "verified": false },
+        { "id": "valve-hl2-process", "type": "youtube", "title": "Valve's Design Process for Creating Half-Life 2 (GDC 2006)", "source": "GDC", "youtubeId": "1plhILdjuZE", "module": "Playtesting like Valve", "verified": false },
+        { "id": "thinking-with-portals", "type": "link", "title": "Thinking With Portals: Creating Valve's New IP", "source": "Game Developer", "url": "https://www.gamedeveloper.com/design/thinking-with-portals-creating-valve-s-new-ip", "module": "Iteration and killing ideas", "verified": true }
+      ]
+    }
+  ],
+  "unityTrack": [
+    { "id": "unity-essentials", "type": "link", "title": "Unity Essentials pathway (free, ~2 weeks)", "source": "Unity Learn", "url": "https://learn.unity.com/pathway/unity-essentials", "level": 0, "verified": true },
+    { "id": "unity-junior-programmer", "type": "link", "title": "Junior Programmer pathway (C#, ~12 weeks)", "source": "Unity Learn", "url": "https://learn.unity.com/pathway/junior-programmer", "level": 1, "verified": true }
+  ]
+}
