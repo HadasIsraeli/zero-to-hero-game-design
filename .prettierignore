@@ -1,0 +1,9 @@
+dist
+coverage
+public/assets
+playwright-report
+test-results
+package-lock.json
+assets
+CLAUDE.md
+MASTER_PROMPT.md

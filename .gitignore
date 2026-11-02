@@ -1,0 +1,16 @@
+node_modules
+dist
+coverage
+*.local
+.env*
+
+# Generated from assets/images by scripts/copy-assets.mjs
+public/assets
+
+# Playwright
+playwright-report
+test-results
+blob-report
+
+.DS_Store
+Thumbs.db
