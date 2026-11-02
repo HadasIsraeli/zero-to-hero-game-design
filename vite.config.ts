@@ -19,12 +19,13 @@ export default defineConfig({
       '@features': fromRoot('./src/features'),
       '@shared': fromRoot('./src/shared'),
       '@content': fromRoot('./content'),
+      '@assets': fromRoot('./assets'),
     },
   },
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
-    include: ['src/**/*.test.{ts,tsx}', 'content/**/*.test.{ts,tsx}', 'scripts/**/*.test.{ts,mjs}'],
+    include: ['src/**/*.test.{ts,tsx}', 'content/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
     css: true,
   },
 });

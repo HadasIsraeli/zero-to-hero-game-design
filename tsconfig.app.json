@@ -28,7 +28,8 @@
       "@app/*": ["./src/app/*"],
       "@features/*": ["./src/features/*"],
       "@shared/*": ["./src/shared/*"],
-      "@content/*": ["./content/*"]
+      "@content/*": ["./content/*"],
+      "@assets/*": ["./assets/*"]
     }
   },
   "include": ["src", "content"]
