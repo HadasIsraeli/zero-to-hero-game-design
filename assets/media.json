@@ -16,7 +16,7 @@
       "level": 1,
       "title": "Core Loop",
       "media": [
-        { "id": "juice-it-or-lose-it", "type": "youtube", "title": "Juice it or lose it — Martin Jonasson & Petri Purho", "youtubeId": "clRfPR9X91E", "start": 3551, "module": "Game feel and juice", "verified": false, "note": "Talk sits inside a longer stream; start offset jumps to it." },
+        { "id": "juice-it-or-lose-it", "type": "youtube", "title": "Juice it or lose it — Martin Jonasson & Petri Purho", "youtubeId": "Fy0aCDmgnxg", "module": "Game feel and juice", "verified": false },
         { "id": "art-of-screenshake", "type": "youtube", "title": "The Art of Screenshake — Jan Willem Nijman (Vlambeer)", "youtubeId": "AJdEqssNZ-U", "module": "Game feel and juice", "verified": false },
         { "id": "four-hour-game-design", "type": "youtube", "title": "The 4 Hour Game Design — Jonatan Söderström", "youtubeId": "sgwlJu8Ql2o", "module": "Paper prototyping", "verified": false },
         { "id": "balatro-cursed-problem", "type": "link", "title": "Balatro's 'Cursed' Design Problem", "source": "Game Maker's Toolkit", "url": "https://gmtk.substack.com/p/balatros-cursed-design-problem", "module": "Feedback, timing and responsiveness", "verified": true, "note": "Page embeds the video; swap to a youtube entry once you add its id." }
@@ -71,7 +71,7 @@
       "media": [
         { "id": "playtest-diagram", "type": "diagram", "file": "images/diagrams/playtest-loop.svg", "alt": "Hypothesis, build, playtest, change, repeat.", "module": "Playtesting like Valve" },
         { "id": "valve-secret-weapon", "type": "youtube", "title": "Valve's \"Secret Weapon\"", "source": "Game Maker's Toolkit", "youtubeId": "9Yomqk0C6kE", "module": "Playtesting like Valve", "verified": false },
-        { "id": "valve-hl2-process", "type": "youtube", "title": "Valve's Design Process for Creating Half-Life 2 (GDC 2006)", "source": "GDC", "youtubeId": "1plhILdjuZE", "module": "Playtesting like Valve", "verified": false },
+        { "id": "valve-hl2-process", "type": "pdf", "title": "Valve's Design Process for Creating Half-Life 2 (GDC 2006 slides)", "source": "Valve", "url": "https://steamcdn-a.akamaihd.net/apps/valve/2006/GDC2006_HL2DesignProcess.pdf", "module": "Playtesting like Valve", "verified": true },
         { "id": "thinking-with-portals", "type": "link", "title": "Thinking With Portals: Creating Valve's New IP", "source": "Game Developer", "url": "https://www.gamedeveloper.com/design/thinking-with-portals-creating-valve-s-new-ip", "module": "Iteration and killing ideas", "verified": true }
       ]
     }
