@@ -55,3 +55,4 @@ content/
 - Small commits, one feature each, with descriptive messages.
 - After each feature: run typecheck, lint, tests and build; fix failures before moving on.
 - Don't add a dependency without saying why.
+- After each step's commit, push to origin and make sure CI passes.
